@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Traffic Management</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Maps JavaScript API -->
+  <script src="https://maps.googleapis.com/maps/api/js?AIzaSyBVpu2gIQmehvCO8d5gBEvV-8eF_btv5JI&libraries=places,directions"></script>
+</head>
+<body class="logged-in">
+  <!-- Horizontal Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logo.jpeg" alt="Logo" class="logo">
+      <h1>Smart Traffic Manager</h1>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+        <!-- …other nav items… -->
+      <li class="nav-item">
+        <a href="challan.html">Pay Challan</a>
+      </li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#" id="logoutBtn">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Header Section -->
+    <header id="home">
+      <div class="container">
+        <h1>Smart Traffic Management System</h1>
+        <p>Optimizing traffic flow for a smarter city.</p>
+        <a href="#vehicle-type" class="cta-button">Get Started</a>
+      </div>
+    </header>
+
+    <!-- Vehicle Type Selection Section -->
+    <section id="vehicle-type">
+      <div class="container">
+        <h2>Choose Vehicle Type</h2>
+        <p>Select your vehicle type to find the best route.</p>
+        <form id="vehicleForm">
+          <div class="form-group">
+            <label for="vehicle-type">Vehicle Type:</label>
+            <select id="vehicle-type" name="vehicle-type">
+              <option value="car">Car</option>
+              <option value="bike">Bike</option>
+              <option value="truck">Truck</option>
+              <option value="bus">Bus</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="source">Source:</label>
+            <input type="text" id="source" placeholder="Enter source location" required>
+          </div>
+          <div class="form-group">
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" placeholder="Enter destination location" required>
+          </div>
+          <button type="submit" class="route-button">Find Best Route</button>
+        </form>
+        <div id="route-result">
+          <!-- Display optimized route here -->
+        </div>
+        <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div> <!-- Map Container -->
+      </div>
+    </section>
+    
+    <!-- Video Upload Section -->
+    <section id="video-upload">
+      <div class="container">
+        <h2>Upload Traffic Video</h2>
+        <p>Upload a video of traffic to analyze congestion levels.</p>
+        <form id="videoUploadForm" action="#" method="post" enctype="multipart/form-data">
+          <div class="file-upload">
+            <label for="traffic-video">Choose a video file</label>
+            <input type="file" id="traffic-video" name="traffic-video" accept="video/*">
+          </div>
+          <button type="submit" class="upload-button">Upload and Analyze</button>
+        </form>
+        <div id="upload-status"></div> <!-- Upload status message -->
+      </div>
+    </section>
+
+    <!-- Traffic Analysis Dashboard -->
+    <section id="traffic-dashboard">
+      <div class="container">
+        <h2>Traffic Analysis Dashboard</h2>
+        <div id="dashboard-content">
+          <p>Upload a video to see traffic analysis results.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tracking Section -->
+    <section id="tracking">
+      <div class="container">
+        <h2>Find Less Traffic Areas</h2>
+        <p>Discover routes with minimal traffic congestion in real-time.</p>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.83923192776!2d77.06889754725782!3d28.527280343544322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1698765432105!5m2!1sen!2sin"
+            width="100%"
+            height="400"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy">
+          </iframe>
+        </div>
+        <button class="refresh-button">Refresh Map</button>
+      </div>
+    </section>
+
+    <!-- Vehicle Type Selection Section -->
+    <section id="vehicle-type">
+      <div class="container">
+        <h2>Choose Vehicle Type</h2>
+        <p>Select your vehicle type to find the best route.</p>
+        <form id="vehicleForm">
+          <div class="form-group">
+            <label for="vehicle-type">Vehicle Type:</label>
+            <select id="vehicle-type" name="vehicle-type">
+              <option value="car">Car</option>
+              <option value="bike">Bike</option>
+              <option value="truck">Truck</option>
+              <option value="bus">Bus</option>
+            </select>
+          </div>
+          <button type="submit" class="route-button">Find Best Route</button>
+        </form>
+        <div id="route-result">
+          <!-- Display optimized route here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section about">
+            <h3>About Us</h3>
+            <p>We are dedicated to optimizing traffic flow and creating smarter cities through innovative technology.</p>
+          </div>
+          <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#reviews">Reviews</a></li>
+              <li><a href="#video-upload">Upload Video</a></li>
+              <li><a href="#tracking">Track Traffic</a></li>
+              <li><a href="#vehicle-type">Vehicle Type</a></li>
+            </ul>
+          </div>
+          <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <p>Email: info@smarttraffic.com</p>
+            <p>Phone: +123 456 7890</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Smart Traffic Management. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <h2>About Traffic Management</h2>
+        <p>Traffic management is essential for ensuring smooth and efficient movement of vehicles and pedestrians in urban areas. Here’s why it matters:</p>
+        <div class="about-content">
+          <div class="about-card">
+            <h3>Reduces Congestion</h3>
+            <p>Effective traffic management systems help reduce traffic congestion by optimizing traffic flow and minimizing bottlenecks. This leads to shorter travel times and less frustration for commuters.</p>
+          </div>
+          <div class="about-card">
+            <h3>Improves Safety</h3>
+            <p>By implementing traffic signals, speed limits, and pedestrian crossings, traffic management systems significantly reduce the risk of accidents and enhance road safety.</p>
+          </div>
+          <div class="about-card">
+            <h3>Reduces Pollution</h3>
+            <p>Traffic congestion contributes to increased air pollution. Smart traffic management reduces idle time for vehicles, leading to lower emissions and a cleaner environment.</p>
+          </div>
+          <div class="about-card">
+            <h3>Enhances Efficiency</h3>
+            <p>With real-time data and analytics, traffic management systems can dynamically adjust traffic signals and routes, ensuring optimal use of road infrastructure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+      <div class="container">
+        <h2>What Our Users Say</h2>
+        <p>Here are some reviews from our users:</p>
+        <div class="reviews-content">
+          <div class="review-card">
+            <div class="review-header">
+              <img src="1.jpg" alt="User Avatar" class="avatar">
+              <div class="user-info">
+                <h3>John Doe</h3>
+                <p>⭐⭐⭐⭐⭐</p>
+              </div>
+            </div>
+            <p>"This system has made my daily commute so much easier. The traffic updates are accurate and timely!"</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <img src="2.jfif" alt="User Avatar" class="avatar">
+              <div class="user-info">
+                <h3>Jane Smith</h3>
+                <p>⭐⭐⭐⭐</p>
+              </div>
+            </div>
+            <p>"I love the vehicle-specific route suggestions. It saves me a lot of time and fuel."</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <img src="3.jpg" alt="User Avatar" class="avatar">
+              <div class="user-info">
+                <h3>Mike Johnson</h3>
+                <p>⭐⭐⭐⭐⭐</p>
+              </div>
+            </div>
+            <p>"The real-time traffic tracking is a game-changer. Highly recommend this system!"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

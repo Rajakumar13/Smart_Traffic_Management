@@ -1,0 +1,980 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Gradient Background for Body */
+  body {
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Gradient background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
+  /* Horizontal Navigation Bar */
+  .navbar {
+    width: 100%;
+    background: rgba(30, 30, 30, 0.9); /* Semi-transparent dark background */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navbar .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar .logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .navbar .logo h1 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-left: 10px;
+  }
+  
+  .navbar .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .navbar .nav-links li {
+    margin: 0 15px;
+  }
+  
+  .navbar .nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .navbar .nav-links a:hover {
+    color: #00c3ff;
+  }
+  
+  /* Other sections (About, Reviews, Upload, Tracking, Footer, etc.) remain unchanged */
+  
+  /* About Section */
+  #about {
+    padding: 60px 0;
+    background-color: rgba(13, 13, 13, 0.8); /* Semi-transparent dark background */
+  }
+  
+  #about .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  #about h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #0078d7; /* Accent color for the heading */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+  
+  #about h2:hover {
+    color: #00a8ff; /* Lighter accent color on hover */
+  }
+  
+  #about p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #cccccc; /* Light gray for the description */
+  }
+  
+  .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Space between cards */
+  }
+  
+  .about-card {
+    flex: 1;
+    min-width: 250px;
+    background-color: #1a1a1a; /* Dark background for cards */
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  }
+  
+  .about-card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 120, 215, 0.3); /* Glow effect on hover */
+  }
+  
+  .about-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffffff; /* White text for headings */
+  }
+  
+  .about-card p {
+    font-size: 1rem;
+    color: #cccccc; /* Light gray for text */
+    margin-bottom: 20px;
+  }
+  
+  /* Reviews Section */
+  #reviews {
+    padding: 60px 0;
+    background-color: rgba(13, 13, 13, 0.8); /* Semi-transparent dark background */
+  }
+  
+  #reviews .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  #reviews h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #0078d7; /* Accent color for the heading */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+  
+  #reviews h2:hover {
+    color: #00a8ff; /* Lighter accent color on hover */
+  }
+  
+  #reviews p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #cccccc; /* Light gray for the description */
+  }
+  
+  .reviews-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Space between cards */
+  }
+  
+  .review-card {
+    flex: 1;
+    min-width: 250px;
+    background-color: #1a1a1a; /* Dark background for cards */
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  }
+  
+  .review-card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 120, 215, 0.3); /* Glow effect on hover */
+  }
+  
+  .review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .user-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #ffffff; /* White text for headings */
+  }
+  
+  .user-info p {
+    font-size: 1rem;
+    color: #ffcc00; /* Yellow color for stars */
+  }
+  
+  .review-card p {
+    font-size: 1rem;
+    color: #cccccc; /* Light gray for text */
+    margin-bottom: 20px;
+  }
+  
+  /* Upload Section */
+  #upload {
+    padding: 60px 0;
+    background-color: rgba(13, 13, 13, 0.8); /* Semi-transparent dark background */
+  }
+  
+  #upload .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  #upload h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #0078d7; /* Accent color for the heading */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+  
+  #upload h2:hover {
+    color: #00a8ff; /* Lighter accent color on hover */
+  }
+  
+  #upload p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #cccccc; /* Light gray for the description */
+  }
+  
+  /* File Upload Styling */
+  .file-upload {
+    margin-bottom: 20px;
+  }
+  
+  .file-upload label {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #0078d7; /* Accent color for the button */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  }
+  
+  .file-upload label:hover {
+    background-color: #00a8ff; /* Lighter accent color on hover */
+    transform: translateY(-3px); /* Slight lift effect on hover */
+  }
+  
+  .file-upload label:active {
+    transform: translateY(0); /* Reset lift effect when clicked */
+  }
+  
+  .file-upload input[type="file"] {
+    display: none; /* Hide the default file input */
+  }
+  
+  /* Upload Button Styling */
+  .upload-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #0078d7; /* Accent color for the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  }
+  
+  .upload-button:hover {
+    background-color: #00a8ff; /* Lighter accent color on hover */
+    transform: translateY(-3px); /* Slight lift effect on hover */
+  }
+  
+  .upload-button:active {
+    transform: translateY(0); /* Reset lift effect when clicked */
+  }
+  
+  /* Tracking Section */
+  #tracking {
+    padding: 60px 0;
+    background-color: rgba(13, 13, 13, 0.8); /* Semi-transparent dark background */
+  }
+  
+  #tracking .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  #tracking h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #0078d7; /* Accent color for the heading */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+  
+  #tracking h2:hover {
+    color: #00a8ff; /* Lighter accent color on hover */
+  }
+  
+  #tracking p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #cccccc; /* Light gray for the description */
+  }
+  
+  /* Map Container */
+  .map-container {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden; /* Ensures the map corners are rounded */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+  }
+  
+  /* Refresh Button */
+  .refresh-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #0078d7; /* Accent color for the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  }
+  
+  .refresh-button:hover {
+    background-color: #00a8ff; /* Lighter accent color on hover */
+    transform: translateY(-3px); /* Slight lift effect on hover */
+  }
+  
+  .refresh-button:active {
+    transform: translateY(0); /* Reset lift effect when clicked */
+  }
+  
+  /* Vehicle Type Selection Section */
+  #vehicle-type {
+    padding: 60px 0;
+    background-color: rgba(13, 13, 13, 0.8); /* Semi-transparent dark background */
+  }
+  
+  #vehicle-type .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  #vehicle-type h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #0078d7; /* Accent color for the heading */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+  
+  #vehicle-type h2:hover {
+    color: #00a8ff; /* Lighter accent color on hover */
+  }
+  
+  #vehicle-type p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #cccccc; /* Light gray for the description */
+  }
+  
+  #vehicle-type .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  #vehicle-type label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #ffffff; /* White text for labels */
+  }
+  
+  #vehicle-type select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #1a1a1a; /* Dark background for inputs */
+    color: #ffffff; /* White text for inputs */
+    border: 1px solid #0078d7; /* Accent border */
+    border-radius: 5px;
+    transition: border-color 0.3s ease; /* Smooth border transition */
+  }
+  
+  #vehicle-type select:hover {
+    border-color: #00a8ff; /* Lighter accent border on hover */
+  }
+  
+  #vehicle-type select:focus {
+    border-color: #00a8ff; /* Lighter accent border on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  #route-result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #1a1a1a; /* Dark background for result box */
+    border: 1px solid #0078d7; /* Accent border */
+    border-radius: 5px;
+    color: #ffffff; /* White text for result */
+  }
+  
+  /* Footer Section */
+  footer {
+    background-color: rgba(13, 13, 13, 0.8); /* Semi-transparent dark background */
+    color: #ffffff; /* White text for contrast */
+    padding: 40px 0 20px 0;
+  }
+  
+  footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  footer .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  footer .footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+  }
+  
+  footer .footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #0078d7; /* Accent color for headings */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+  
+  footer .footer-section h3:hover {
+    color: #00a8ff; /* Lighter accent color on hover */
+  }
+  
+  footer .footer-section p {
+    font-size: 1rem;
+    color: #cccccc; /* Light gray for text */
+    line-height: 1.6;
+  }
+  
+  footer .footer-section.links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  footer .footer-section.links ul li {
+    margin-bottom: 10px;
+  }
+  
+  footer .footer-section.links ul li a {
+    color: #cccccc; /* Light gray for links */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+  
+  footer .footer-section.links ul li a:hover {
+    color: #00a8ff; /* Lighter accent color on hover */
+  }
+  
+  footer .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333; /* Light border for separation */
+    font-size: 0.9rem;
+    color: #cccccc; /* Light gray for text */
+  }
+  
+  /* Login Page Specific Styles */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('bg.jpeg'); /* Add your background image path here */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .login-form {
+    background: rgba(30, 30, 30, 0.9); /* Semi-transparent dark background */
+    padding: 40px;
+    border-radius: 8px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  }
+  
+  .login-form:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 120, 215, 0.3); /* Glow effect on hover */
+  }
+  
+  .login-form .logo-placeholder img {
+    width: 80px; /* Adjust the size as needed */
+    height: 80px; /* Ensure the height matches the width for a perfect circle */
+    border-radius: 50%; /* Make the logo round */
+    object-fit: cover; /* Ensure the image fits within the circle */
+    margin-bottom: 20px;
+  }
+  
+  .login-form h2 {
+    margin-bottom: 20px;
+    color: #00c3ff; /* Accent color for the heading */
+  }
+  
+  .login-form label {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ffffff; /* White text for labels */
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: #333;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease; /* Smooth border transition */
+  }
+  
+  .login-form input:focus {
+    border: 1px solid #00c3ff; /* Accent border on focus */
+  }
+  
+  .login-form button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background: #00c3ff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .login-form button:hover {
+    background: #0095cc; /* Darker accent color on hover */
+  }
+  
+  .login-form p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #cccccc; /* Light gray for text */
+  }
+  
+  .login-form p a {
+    color: #00c3ff;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+  }
+  
+  .login-form p a:hover {
+    color: #0095cc; /* Darker accent color on hover */
+    text-decoration: underline;
+  }
+
+  /* styles.css */
+
+/* Video Upload Section */
+#video-upload {
+    padding: 2rem 0;
+    background-color: #1a1717;
+  }
+  
+  #video-upload .file-upload {
+    margin: 1rem 0;
+  }
+  
+  #video-upload .upload-button {
+    background-color: #28a745;
+    color: rgb(58, 51, 51);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #video-upload .upload-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Traffic Analysis Dashboard */
+  #traffic-dashboard {
+    padding: 2rem 0;
+    background-color: #2b2525;
+  }
+  
+  #traffic-dashboard .dashboard-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+  }
+  
+  #traffic-dashboard .stat-card {
+    background-color: #221f1f;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    width: 30%;
+  }
+  
+  #traffic-dashboard .stat-card h4 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  #traffic-dashboard .stat-card p {
+    margin: 0.5rem 0 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  #traffic-dashboard .dashboard-graph {
+    margin: 2rem 0;
+  }
+  
+  #traffic-dashboard .dashboard-graph h4 {
+    margin-bottom: 1rem;
+  }
+
+
+  /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
+  /* Horizontal Navigation Bar */
+  .navbar {
+    width: 100%;
+    background: #1e1e1e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navbar .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar .logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .navbar .logo h1 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-left: 10px;
+  }
+  
+  .navbar .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .navbar .nav-links li {
+    margin: 0 15px;
+  }
+  
+  .navbar .nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .navbar .nav-links a:hover {
+    color: #00c3ff;
+  }
+  
+  /* Video Upload Section */
+  #video-upload {
+    padding: 60px 0;
+    background-color: rgba(13, 13, 13, 0.8);
+  }
+  
+  #video-upload .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  #video-upload h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #0078d7;
+    transition: color 0.3s ease;
+  }
+  
+  #video-upload h2:hover {
+    color: #00a8ff;
+  }
+  
+  #video-upload p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #cccccc;
+  }
+  
+  #video-upload .file-upload {
+    margin-bottom: 20px;
+  }
+  
+  #video-upload .file-upload label {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #0078d7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #video-upload .file-upload label:hover {
+    background-color: #00a8ff;
+    transform: translateY(-3px);
+  }
+  
+  #video-upload .file-upload input[type="file"] {
+    display: none;
+  }
+  
+  #video-upload .upload-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #0078d7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #video-upload .upload-button:hover {
+    background-color: #00a8ff;
+    transform: translateY(-3px);
+  }
+  
+  #video-upload .upload-button:active {
+    transform: translateY(0);
+  }
+  
+  /* Traffic Analysis Dashboard */
+  #traffic-dashboard {
+    padding: 60px 0;
+    background-color: rgba(13, 13, 13, 0.8);
+  }
+  
+  #traffic-dashboard .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  #traffic-dashboard h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #0078d7;
+    transition: color 0.3s ease;
+  }
+  
+  #traffic-dashboard h2:hover {
+    color: #00a8ff;
+  }
+  
+  #traffic-dashboard p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #cccccc;
+  }
+  
+  #traffic-dashboard .dashboard-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+  }
+  
+  #traffic-dashboard .stat-card {
+    background-color: #221f1f;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    width: 30%;
+  }
+  
+  #traffic-dashboard .stat-card h4 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  #traffic-dashboard .stat-card p {
+    margin: 0.5rem 0 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  #traffic-dashboard .dashboard-graph {
+    margin: 2rem 0;
+  }
+  
+  #traffic-dashboard .dashboard-graph h4 {
+    margin-bottom: 1rem;
+  }
+  
+  /* Other sections (Tracking, Vehicle Type, Footer, etc.) remain unchanged */
+
+  #video-upload {
+    padding: 60px 0;
+    background-color: rgba(13, 13, 13, 0.8);
+  }
+  
+  #video-upload .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  #video-upload h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #0078d7;
+    transition: color 0.3s ease;
+  }
+  
+  #video-upload h2:hover {
+    color: #00a8ff;
+  }
+  
+  #video-upload p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #cccccc;
+  }
+  
+  #video-upload .file-upload {
+    margin-bottom: 20px;
+  }
+  
+  #video-upload .file-upload label {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #0078d7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #video-upload .file-upload label:hover {
+    background-color: #00a8ff;
+    transform: translateY(-3px);
+  }
+  
+  #video-upload .file-upload input[type="file"] {
+    display: none;
+  }
+  
+  #video-upload .upload-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #0078d7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #video-upload .upload-button:hover {
+    background-color: #00a8ff;
+    transform: translateY(-3px);
+  }
+  
+  #video-upload .upload-button:active {
+    transform: translateY(0);
+  }
+  
+  #upload-status {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #00c3ff;
+  }
+
+  /* Map Container */
+#map {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+  }
+  
+  /* Form Group Styling */
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #ffffff;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #0078d7;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus {
+    border-color: #00a8ff;
+    outline: none;
+  }
+

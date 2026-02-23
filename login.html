@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Smart Traffic Management</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .error-message {
+      color: #ff6b6b;
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+      display: none;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-container {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .login-form h2 {
+      animation: fadeInUp 0.8s ease-out;
+      animation-delay: 0.2s;
+      animation-fill-mode: backwards;
+    }
+
+    .form-group {
+      animation: fadeInUp 0.8s ease-out;
+      animation-delay: 0.4s;
+      animation-fill-mode: backwards;
+    }
+
+    .form-group:nth-of-type(2) {
+      animation-delay: 0.6s;
+    }
+
+    .logo-placeholder {
+      animation: fadeInUp 0.8s ease-out;
+      animation-delay: 0.1s;
+      animation-fill-mode: backwards;
+    }
+
+    .logo {
+      max-width: 100px;
+      display: block;
+      margin: 0 auto 20px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    #login-btn {
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #login-btn:hover {
+      background-color: #007BFF;
+      transform: scale(1.03);
+      color: #fff;
+    }
+
+    a {
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <form class="login-form" id="loginForm">
+      <div class="logo-placeholder">
+        <img src="logo.jpeg" alt="Logo" class="logo">
+      </div>
+
+      <h2>Login</h2>
+      
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" required>
+        <div id="username-error" class="error-message"></div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <div id="password-error" class="error-message"></div>
+      </div>
+
+      <button type="submit" id="login-btn">Login</button>
+      <p>Don't have an account? <a href="register.html">Register here</a></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      
+      document.querySelectorAll('.error-message').forEach(el => {
+        el.style.display = 'none';
+        el.textContent = '';
+      });
+      
+      try {
+        const response = await fetch('http://localhost:3000/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+          if (data.field && data.message) {
+            const errorElement = document.getElementById(`${data.field}-error`);
+            errorElement.textContent = data.message;
+            errorElement.style.display = 'block';
+          } else {
+            throw new Error(data.message || 'Login failed');
+          }
+        } else {
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('username', username);
+          window.location.href = 'index.html';
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        const errorElement = document.getElementById('username-error');
+        errorElement.textContent = error.message;
+        errorElement.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pay Challan - Smart Traffic Management</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Base animation */
+    body {
+      background-color: #121212;
+      background: #121212;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleHover {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 1rem;
+      text-decoration: none;
+      color: #1e90ff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      animation: fadeInUp 0.6s ease;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+      color: #63b3ed;
+    }
+
+    .challan-container {
+      max-width: 480px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: #1f1f1f;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      animation: fadeInUp 1s ease;
+    }
+
+    .challan-container h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #f1f1f1;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: #ccc;
+    }
+
+    .form-group select,
+    .form-group input {
+      width: 100%;
+      padding: 0.5rem;
+      background: #2b2b2b;
+      color: #eee;
+      border: 1px solid #444;
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: transform 0.2s ease;
+    }
+
+    .form-group select:hover,
+    .form-group input:hover {
+      animation: scaleHover 0.4s ease-in-out;
+    }
+
+    .payment-methods {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .payment-methods label {
+      color: #ccc;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .extra-field {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s ease;
+    }
+
+    .extra-field.show {
+      max-height: 100px;
+    }
+
+    .btn-pay {
+      width: 100%;
+      padding: 0.6rem;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-pay:hover {
+      background: #218838;
+      transform: scale(1.05);
+    }
+
+    .qr-container {
+  text-align: center;
+  margin-top: 1.5rem;
+  animation: fadeInUp 0.6s ease-in-out;
+  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+    .qr-container img {
+      margin-top: 1rem;
+      width: 180px;
+      height: 180px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .qr-container h3 {
+      color: #ccc;
+      font-weight: 500;
+    }
+
+    .btn-done {
+  display: block;
+  margin: 1rem auto 0 auto; /* center horizontally, with spacing from QR */
+  background: #007bff;
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+
+    .btn-done:hover {
+      background: #0056b3;
+    }
+
+    #successMessage {
+      text-align: center;
+      color: #4caf50;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      display: none;
+      animation: fadeInUp 0.6s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-link">&larr; Back to Home</a>
+
+  <div class="challan-container">
+    <h2>Pay Your Challan</h2>
+    <form id="payChallanForm">
+      <div class="form-group">
+        <label for="vehicleType">Vehicle Type</label>
+        <select id="vehicleType" name="vehicleType" required>
+          <option value="">-- Select --</option>
+          <option value="car">Car</option>
+          <option value="motorcycle">Motorcycle</option>
+          <option value="truck">Truck</option>
+          <option value="bus">Bus</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="vehicleNumber">Vehicle Number</label>
+        <input type="text" id="vehicleNumber" name="vehicleNumber" placeholder="KA-01-AB-1234" required />
+      </div>
+
+      <div class="form-group">
+        <label for="challanAmount">Challan Amount (₹)</label>
+        <input type="number" id="challanAmount" name="challanAmount" placeholder="Amount in INR" required />
+      </div>
+
+      <div class="form-group payment-methods">
+        <label><input type="radio" name="paymentMethod" value="upi" required /> UPI</label>
+        <label><input type="radio" name="paymentMethod" value="card" /> Card</label>
+      </div>
+
+      <div class="form-group extra-field" id="extraField">
+        <label id="extraLabel" for="extraInput">Enter Details</label>
+        <input type="text" id="extraInput" name="extraInput" placeholder="" />
+      </div>
+
+      <button type="submit" class="btn-pay">Proceed to Pay</button>
+    </form>
+
+    <div class="qr-container" id="qrContainer">
+      <h3>Scan to Pay</h3>
+      <img id="qrImage" src="" alt="QR Code for UPI Payment" />
+      <button class="btn-done" id="btnDone">Done</button>
+    </div>
+
+    <div id="successMessage">✅ Payment Successful!</div>
+  </div>
+
+  <script>
+    const payForm = document.getElementById('payChallanForm');
+    const extraField = document.getElementById('extraField');
+    const extraInput = document.getElementById('extraInput');
+    const extraLabel = document.getElementById('extraLabel');
+    const qrContainer = document.getElementById('qrContainer');
+    const qrImage = document.getElementById('qrImage');
+    const btnDone = document.getElementById('btnDone');
+    const successMessage = document.getElementById('successMessage');
+
+    document.querySelectorAll('input[name="paymentMethod"]').forEach((radio) => {
+      radio.addEventListener('change', function () {
+        extraField.classList.add('show');
+        qrContainer.style.display = 'none';
+        successMessage.style.display = 'none';
+        if (this.value === 'upi') {
+          extraLabel.textContent = 'Enter UPI ID';
+          extraInput.placeholder = 'example@upi';
+        } else {
+          extraLabel.textContent = 'Enter Card Details';
+          extraInput.placeholder = '1234 5678 9012 3456';
+        }
+      });
+    });
+
+    payForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const type = this.vehicleType.value;
+      const num = this.vehicleNumber.value.trim();
+      const amt = this.challanAmount.value;
+      const method = document.querySelector('input[name="paymentMethod"]:checked').value;
+      const details = this.extraInput.value.trim();
+
+      alert(`Paying ₹${amt} for ${type} (${num}) via ${method.toUpperCase()} (${details})`);
+
+      if (method === 'upi') {
+        const upiUrl = `upi://pay?pa=${details}&pn=SmartTraffic&am=${amt}&cu=INR`;
+        const qrApi = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(upiUrl)}&size=180x180`;
+        qrImage.src = qrApi;
+        qrContainer.style.display = 'block';
+        successMessage.style.display = 'none';
+      } else {
+        qrContainer.style.display = 'none';
+        successMessage.style.display = 'block';
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 2500);
+      }
+    });
+
+    btnDone.addEventListener('click', () => {
+      qrContainer.style.display = 'none';
+      successMessage.style.display = 'block';
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 2500);
+    });
+  </script>
+</body>
+</html>
